@@ -1,0 +1,12 @@
+.my_div{
+   background-color:aqua;
+   width:30%;
+   height: fit-content;
+   margin: 20px 60% 0 40%;
+   border-radius: 20px;
+   text-align: center;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   -ms-border-radius: 20px;
+   -o-border-radius: 20px;
+}

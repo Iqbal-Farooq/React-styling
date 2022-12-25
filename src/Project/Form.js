@@ -1,14 +1,22 @@
 import Div from "./Div";
 import Button from "./Button";
 
-import { useState } from "react";
+import { useRef} from "react";
 
 const Form=(props)=>{
-    const[name,SetName]=useState('');
-    const [age,SetAge]=useState('');
+   
+
+    const NameInput=useRef();
+    const AgeInput=useRef();
+    const ColgInput=useRef();
+
+
     const FormHandler=(e)=>{
         e.preventDefault();
-        if(name.trim().length===0 || age.trim().length===0){
+       const name=NameInput.current.value;
+        const age=AgeInput.current.value;
+        const college=ColgInput.current.value;
+        if(name.trim().length===0 || age.trim().length===0 || college.trim().length===0){
                 alert('plz fill the necessary fields')
             return ;
         }
@@ -17,32 +25,26 @@ const Form=(props)=>{
 
             return ;
         }
-        // console.log(document.getElementById('n').value)
-        //  console.log(document.getElementById('a').value)
-        props.onAdduser(name,age);
-        // console.log(`name is ${name}`);
-        // console.log(`age is ${age}`);
-        SetName('');
-        SetAge('');
+        props.onAdduser(name,age,college);
+        NameInput.current.value='';
+        AgeInput.current.value='';
+        ColgInput.current.value='';
+        
     }
-    const ChangeName=(e)=>{
-        // console.log(e.target.value)
-        SetName(e.target.value)
-    }
-     const ChangeAge=(e)=>{
-        //  console.log(e.target.value)
-        SetAge(e.target.value);
-    }
+   
 
     return (
    
         <Div>
             <form onSubmit={FormHandler}>
             <label>NAME:</label> <br />
-            <input type="text" id="n"  value={name} onChange={ChangeName}/> <br /> <br />
+            <input type="text" id="n" ref={NameInput} /> <br /> <br />
              <label>AGE:</label> <br />
-            <input type="number" id="a"  value={age} onChange={ChangeAge}/> <br /> <br />
+            <input type="number" id="a" ref={AgeInput} /> <br /> <br />
+            <label>COLLEGE NAME :</label>  <br />
+            <input type="text" id="c" ref={ColgInput} /> <br /> <br />
             <Button>Submit</Button>
+            <br />
 
             </form>
            

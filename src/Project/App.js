@@ -6,10 +6,10 @@ import { ReactDOM } from "react";
 
 const App=()=>{
     const [list,setList]=useState([])
-    const userHandler=(Name,Age)=>{
-        console.log('done')
+    const userHandler=(Name,Age,College)=>{
+       
         setList((preState)=>{
-            return[...preState,{name:Name,age:Age}];
+            return[...preState,{name:Name,age:Age,college:College}];
         });
     }
     return (
